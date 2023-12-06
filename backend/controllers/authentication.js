@@ -23,13 +23,13 @@ router.post('/', async (req, res) => {
 router.get('/profile', async (req, res) => {
     console.log(req.session.userId)
     // *** GOOD way to handle when a user is authorized and when they are not. *** //
-    // try {
-    //     let user = await User.findOne({
-    //         where: { userId: req.body.email }
-    //     })
-    //         res.json(user)
-    // } catch (err) {
-    //     console.log(err)
-    //     res.json(null)
-    // }
+    try {
+        let user = await User.findOne({
+            where: { userId: req.body.email }
+        })
+            res.json(user)
+    } catch (err) {
+        console.log(err)
+        res.json(null)
+    }    
 })
